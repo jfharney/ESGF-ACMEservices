@@ -131,5 +131,9 @@ def roles(request,username):
 	else:
 		print 'is not connected'
 		
+		
+		#get the username
+		
+		
 		return HttpResponse('roles' + '\n')
 	
