@@ -12,10 +12,24 @@ acme_services_config = ConfigParser.ConfigParser()
 acme_services_config.read('ACMEservices.cfg')
 
 
+#for GET:
+#curl -X POST http://localhost:8081/acme_services/publishing/publish_data/jfharney
+#for POST:
+#echo '{"realm": "lndice"}' | curl -d @- 'http://localhost:8081/groups/base_facets/jfharney?project=ACME' -H "Accept:application/json" -H "Context-Type:application/json"
+
+def publish_data(request,username):
+    
+    
+    
+    return HttpResponse('Published')
+
+
+
+
 #Both reads and writes basic facets
 
 #for GET:
-#curl -X GET http://localhost:8081/groups/base_facets/jfharney
+#curl -X GET http://localhost:8081/acme_services/publishing/base_facets/jfharney
 #for POST:
 #echo '{"realm": "lndice"}' | curl -d @- 'http://localhost:8081/groups/base_facets/jfharney?project=ACME' -H "Accept:application/json" -H "Context-Type:application/json"
 #output:
@@ -30,15 +44,9 @@ def base_facets(request,username):
         print 'in POST'
         
         
-        project = ''
-        if not request.GET.get('project') == None:
-            
-            project = str(request.GET.get('project')).strip()
-            
-        else:
-            project = 'ACME'
         
-        base_facets_put(project)
+        
+        base_facets_put(request)
         
         return HttpResponse("In POST\n")
     
@@ -60,9 +68,16 @@ def base_facets(request,username):
         
         return HttpResponse(categories_json)
 
-def base_facets_put(project):
+def base_facets_put(request):
     import json
         
+    project = ''
+    if not request.GET.get('project') == None:
+        
+        project = str(request.GET.get('project')).strip()
+        
+    else:
+        project = 'ACME'
         
     print 'request.body: ' + str(request.body)
     
@@ -81,7 +96,7 @@ def base_facets_put(project):
         facet_values_arr.append(facet_values)
     
     
-    write_facet_values(project,facet_arr,facet_values_arr)
+    #write_facet_values(project,facet_arr,facet_values_arr)
     
 
 def base_facets_get(project):
