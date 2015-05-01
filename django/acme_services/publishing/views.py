@@ -12,6 +12,20 @@ acme_services_config = ConfigParser.ConfigParser()
 acme_services_config.read('ACMEservices.cfg')
 
 
+#for GET:
+#curl -X POST http://localhost:8081/acme_services/publishing/publish_data/jfharney
+#for POST:
+#echo '{"realm": "lndice"}' | curl -d @- 'http://localhost:8081/groups/base_facets/jfharney?project=ACME' -H "Accept:application/json" -H "Context-Type:application/json"
+
+def publish_data(request,username):
+    
+    
+    
+    return HttpResponse('Published')
+
+
+
+
 #Both reads and writes basic facets
 
 #for GET:
