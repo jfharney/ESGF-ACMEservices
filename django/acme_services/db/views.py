@@ -282,7 +282,7 @@ def publish(request,username):
 
 
 
- 		
+'''
 #writes to esg.ini file given project, array of facet names and their associated values
 def write_facet_values(project,facet_arr,facet_values_arr):
 	
@@ -356,22 +356,16 @@ def write_facet_values(project,facet_arr,facet_values_arr):
 	
 	f.close()
 		
-
-
-
-
-
-
-
-
-
-
 '''
-		parser.add_section('bug_tracker22')
-		parser.set('bug_tracker22', 'url', 'http://localhost:8080/bugs')
-		parser.set('bug_tracker22', 'username', 'dhellmann')
-		parser.set('bug_tracker22', 'password', 'secret')
-'''
+
+
+
+
+
+
+
+
+
 
 
 '''
