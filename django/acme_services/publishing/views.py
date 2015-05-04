@@ -47,6 +47,7 @@ def publish_data(request,username):
        acme_root = acme_services_config.get("paths","acme_root")
        esgf_root = acme_services_config.get("paths","acme_root")
        
+       print 'acme_root: ' + acme_root + ' esgf_root: ' + esgf_root
        
        proj = json_data['project']
        dt = json_data['data_type']
@@ -56,6 +57,8 @@ def publish_data(request,username):
        range = json_data['range']
        regrid = json_data['regridding']
        
+       dsname = exp
+       
        print 'proj: ' + proj
        print 'dt: ' + dt
        print 'exp: ' + exp
@@ -63,6 +66,17 @@ def publish_data(request,username):
        print 'realm: ' + realm
        print 'range: ' + range
        print 'regrid: ' + regrid
+       
+       log = open('output.log', 'w')
+       
+       
+       # Step 0 - indicate we are doing something.
+       print 'Starting publishing script'
+       updateState(dsname, "PublishScriptStarted", log)
+       print 'DONE STATE CHANGE'
+
+       
+       
        
        
        '''
