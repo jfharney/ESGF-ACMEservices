@@ -106,6 +106,19 @@ def publish_data(request,username):
 
        updateState(dsname, 'DataCopied', log)
        
+       cmdline = 'esginitialize -c'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'INITIALIZE FAILED'
+            updateState(dsname, 'INITIALIZEFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF INIT FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'Initialized', log)
+       
+       
        '''
        proj = facets['project']
        dt = facets['data_type']
