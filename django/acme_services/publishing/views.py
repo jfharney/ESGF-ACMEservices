@@ -49,14 +49,23 @@ def publish_data(request,username):
        esgf_root = acme_services_config.get("paths","acme_root")
        
        print 'acme_root: ' + acme_root + ' esgf_root: ' + esgf_root
+       print 'extracting bits'
        
        proj = json_data['project']
+       print 'proj:', proj
        dt = json_data['data_type']
+       print 'dt: ', dt
        exp = json_data['experiment']
+       print 'exp: ', exp
        vnum = json_data['versionnum']
+       print 'vnum: ', vnum
        realm = json_data['realm']
+       print 'realm: ', realm
        range = json_data['range']
+       print 'range: ', range
        regrid = json_data['regridding']
+       print 'regrid: ', regrid
+       print 'bits extracted'
        
        dsname = exp
        
@@ -68,7 +77,9 @@ def publish_data(request,username):
        print 'range: ' + range
        print 'regrid: ' + regrid
        
+       print 'opening log'
        log = open('output.log', 'w')
+       print 'log opened'
        
        
        # Step 0 - indicate we are doing something.
@@ -107,7 +118,8 @@ def publish_data(request,username):
 
        updateState(dsname, 'DataCopied', log)
        
-       cmdline = 'esginitialize -c'
+       cmdline = './init.sh'
+#       cmdline = '/usr/local/uvcdat/1.5.0/bin/esginitialize -c'
        retcode = runCmdLine(cmdline, log)
        if retcode == 'bad':
             print 'INITIALIZE FAILED'
@@ -117,8 +129,50 @@ def publish_data(request,username):
             else:
                 print 'ESGF INIT FAILED. CONTINUING'
        else:
+	    print 'Initialized succeeded'
             updateState(dsname, 'Initialized', log)
+
+       cmdline = './scan.sh'
+       retcode = runCmdLine(cmdline, log)
+
+       if retcode == 'bad':
+            print 'SCAN FAILED'
+            updateState(dsname, 'SCANFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF SCAN FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'ScanComplete', log)
+              
+       cmdline = './prepublish.sh'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'PREPUBLISH FAILED'
+            updateState(dsname, 'PREPUBLISHFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF PREPUBLISH FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'PrePublishComplete', log)
+
+       cmdline = './publish.sh'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'PUBLISH FAILED'
+            updateState(dsname, 'PUBLISHFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF PUBLISH FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'PublishComplete', log)
+
+
+       updateState(dsname, 'Published', log)
        
+	
        
        '''
        proj = facets['project']
@@ -235,7 +289,7 @@ def updateState(dsname, state, log):
 def runCmdLine(cmdline, log):
    try:
       print 'Trying: ', cmdline
-      retcode = subprocess.check_call(cmdline, stdout=log, stderr=log, shell=True)
+      retcode = subprocess.check_call(cmdline, shell=True)
       return retcode
    except:
       print 'exception'
