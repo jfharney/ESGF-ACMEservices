@@ -76,6 +76,18 @@ def publish_data(request,username):
        print 'DONE STATE CHANGE'
 
        
+       # Step 1 - copy certificate
+       source = os.path.join(acme_root, 'tmp', username, 'x509acme')
+       dest = '/root/.globus/certificate-file'
+       
+       try:
+          shutil.copyfile(source, dest)
+       except:
+          updateState(dsname, 'CERTCOPYFAILED', log)
+          if quit == 1:
+              return -1
+          else:
+              print 'CERT COPY FAILED. CONTINUING'
        
        
        
