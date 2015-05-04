@@ -14,9 +14,9 @@ acme_services_config.read('ACMEservices.cfg')
 
 #for GET:
 #curl -X POST http://localhost:8081/acme_services/publishing/publish_data/jfharney
-#for POST:
-#echo '{"realm": "lndice"}' | curl -d @- 'http://localhost:8081/groups/base_facets/jfharney?project=ACME' -H "Accept:application/json" -H "Context-Type:application/json"
 
+#for POST:
+#echo '{"project": "ACME", "data_type": "climo", "regridding": "bilinear", "realm": "atm", "experiment": "B1850C5e1_ne30", "range": "all", "versionnum": "v0_1"}' | curl -d @- 'http://esg.ccs.ornl.gov:7070/acme_services/publishing/publish_data/jfharney' -H "Accept:application/json" -H "Context-Type:application/json"
 import os, subprocess
 import shutil
 
@@ -35,14 +35,37 @@ def publish_data(request,username):
     
        for key in json_data:
           print 'key: ' + key + ' value: ' + str(json_data[key])
-    
-       for key in request.GET:
-           print 'get key: ' + key + ' ' + request.GET[key]
-       '''
+       
+       
+       
        # These should come over from acme-dev-* but this will work for now.
-       acme_root = '/data/acme/ea'
-       esgf_root = '/data/acme/projects'
+       
+       import ConfigParser
+       acme_services_config = ConfigParser.ConfigParser()
+       acme_services_config.read('ACMEservices.cfg')
 
+       acme_root = acme_services_config.get("paths","acme_root")
+       esgf_root = acme_services_config.get("paths","acme_root")
+       
+       
+       proj = json_data['project']
+       dt = json_data['data_type']
+       exp = json_data['experiment']
+       vnum = json_data['versionnum']
+       realm = json_data['realm']
+       range = json_data['range']
+       regrid = json_data['regridding']
+       
+       print 'proj: ' + proj
+       print 'dt: ' + dt
+       print 'exp: ' + exp
+       print 'vnum: ' + vnum
+       print 'realm: ' + realm
+       print 'range: ' + range
+       print 'regrid: ' + regrid
+       
+       
+       '''
        proj = facets['project']
        dt = facets['data_type']
        exp = facets['experiment']
