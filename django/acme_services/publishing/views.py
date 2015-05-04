@@ -17,12 +17,151 @@ acme_services_config.read('ACMEservices.cfg')
 #for POST:
 #echo '{"realm": "lndice"}' | curl -d @- 'http://localhost:8081/groups/base_facets/jfharney?project=ACME' -H "Accept:application/json" -H "Context-Type:application/json"
 
+import os, subprocess
+import shutil
+
+dbhost = 'acme-dev-2.ornl.gov'
+port = ':8081'
+
+
+
 def publish_data(request,username):
     
+       json_data = json.loads(request.body)
+    
+       facet_arr = []
+       facet_values_arr = []
     
     
-    return HttpResponse('Published')
+       for key in json_data:
+          print 'key: ' + key + ' value: ' + str(json_data[key])
+    
+       for key in request.GET:
+           print 'get key: ' + key + ' ' + request.GET[key]
+       '''
+       # These should come over from acme-dev-* but this will work for now.
+       acme_root = '/data/acme/ea'
+       esgf_root = '/data/acme/projects'
 
+       proj = facets['project']
+       dt = facets['data_type']
+       exp = facets['experiment']
+       vnum = facets['versionnum']
+       realm = facets['realm']
+       range = facets['range']
+       regrid = facets['regridding']
+       dsname= exp
+       log = open('output.log', 'w')
+
+       # Step 0 - indicate we are doing something.
+       print 'Starting publishing script'
+       updateState(dsname, "PublishScriptStarted", log)
+       print 'DONE STATE CHANGE'
+
+       # Step 1 - copy certificate
+       source = os.path.join(acme_root, 'tmp', username, 'x509acme')
+       dest = '/root/.globus/certificate-file'
+       
+       try:
+          shutil.copyfile(source, dest)
+       except:
+          updateState(dsname, 'CERTCOPYFAILED', log)
+          if quit == 1:
+              return -1
+          else:
+              print 'CERT COPY FAILED. CONTINUING'
+
+       # /data/acme/projects/%(project)s/%(data_type)s/%(experiment)s/%(versionnum)s/%(realm)s/%(regridding)s/%(range)s
+       updateState(dsname, 'CertCopied', log)
+       source = os.path.join(acme_root, dsname, 'climos')
+       dest = os.path.join(esgf_root, proj, dt, exp, vnum, realm, regrid, range)
+       try:
+          print 'Copying ', source, ' to: ' , dest
+          shutil.copytree(source, dest)
+       except:
+          updateState(dsname, 'DATACOPYFAILED', log)
+          if quit == 1:
+              return -1
+          else:
+              print 'DATA COPY FAILED. CONTINUING'
+
+       updateState(dsname, 'DataCopied', log)
+
+       cmdline = 'esginitialize -c'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'INITIALIZE FAILED'
+            updateState(dsname, 'INITIALIZEFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF INIT FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'Initialized', log)
+
+       cmdline = './scan.sh'
+       retcode = runCmdLine(cmdline, log)
+
+       if retcode == 'bad':
+            print 'SCAN FAILED'
+            updateState(dsname, 'SCANFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF SCAN FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'ScanComplete', log)
+
+       cmdline = './prepublish.sh'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'PREPUBLISH FAILED'
+            updateState(dsname, 'PREPUBLISHFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF PREPUBLISH FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'PrePublishComplete', log)
+
+       cmdline = './publish.sh'
+       retcode = runCmdLine(cmdline, log)
+       if retcode == 'bad':
+            print 'PUBLISH FAILED'
+            updateState(dsname, 'PUBLISHFAILED', log)
+            if quit == 1:
+                return -1
+            else:
+                print 'ESGF PUBLISH FAILED. CONTINUING'
+       else:
+            updateState(dsname, 'PublishComplete', log)
+
+
+       updateState(dsname, 'Published', log)
+
+       '''
+           
+           
+           
+    
+       return HttpResponse('Published')
+
+
+
+def updateState(dsname, state, log):
+   echocmd = "echo '{\"published\": \""+state+"\"}'"
+   curlcmd = "curl -d @- 'http://"+dbhost+port+"/exploratory_analysis/dataset_published/"+dsname+"/' -H \"Accept:application/json\" -H \"Content-Type:application/json\""
+   cmdline = echocmd+'|'+curlcmd
+   runCmdLine(cmdline, log)
+
+def runCmdLine(cmdline, log):
+   try:
+      print 'Trying: ', cmdline
+      retcode = subprocess.check_call(cmdline, stdout=log, stderr=log, shell=True)
+      return retcode
+   except:
+      print 'exception'
+      return 'bad'
 
 
 
