@@ -90,6 +90,21 @@ def publish_data(request,username):
               print 'CERT COPY FAILED. CONTINUING'
        
        
+       # /data/acme/projects/%(project)s/%(data_type)s/%(experiment)s/%(versionnum)s/%(realm)s/%(regridding)s/%(range)s
+       updateState(dsname, 'CertCopied', log)
+       source = os.path.join(acme_root, dsname, 'climos')
+       dest = os.path.join(esgf_root, proj, dt, exp, vnum, realm, regrid, range)
+       try:
+          print 'Copying ', source, ' to: ' , dest
+          shutil.copytree(source, dest)
+       except:
+          updateState(dsname, 'DATACOPYFAILED', log)
+          if quit == 1:
+              return -1
+          else:
+              print 'DATA COPY FAILED. CONTINUING'
+
+       updateState(dsname, 'DataCopied', log)
        
        '''
        proj = facets['project']
