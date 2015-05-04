@@ -27,6 +27,7 @@ port = ':8081'
 
 def publish_data(request,username):
     
+       print 'request.body: ' + request.body
        json_data = json.loads(request.body)
     
        facet_arr = []
