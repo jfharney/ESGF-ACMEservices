@@ -28,7 +28,42 @@ port = ':8081'
 def publish_data(request,username):
     
        print 'request.body: ' + request.body
-       json_data = json.loads(request.body)
+       
+       
+       proj = ''
+       dt = ''
+       exp = ''
+       vnum = ''
+       realm = ''
+       range = ''
+       regrid = ''
+       
+       
+       if request.POST:
+           print 'its a post'
+           print 'req.POST: ' + str(request.POST)
+           for key in request.POST:
+               print 'key: ' + key
+               if key == 'project':
+                   proj = request.POST[key]
+               elif key == 'data_type':
+                   dt = request.POST[key]
+               elif key == 'versionnum':
+                   vnum = request.POST[key]
+               elif key == 'realm':
+                   realm = request.POST[key]
+               elif key == 'range':
+                   range = request.POST[key]
+               elif key == 'experiment':
+                   exp = request.POST[key]
+               elif key == 'regridding':
+                   regrid = request.POST[key]
+            
+       '''
+       #body_unicode = request.POST.decode('utf-8')
+       json_data = json.loads(request.POST)
+       
+       #json_data = json.loads(request.body)
     
        facet_arr = []
        facet_values_arr = []
@@ -66,7 +101,8 @@ def publish_data(request,username):
        regrid = json_data['regridding']
        print 'regrid: ', regrid
        print 'bits extracted'
-       
+       '''
+                   
        dsname = exp
        
        print 'proj: ' + proj
@@ -80,6 +116,16 @@ def publish_data(request,username):
        print 'opening log'
        log = open('output.log', 'w')
        print 'log opened'
+       
+       import ConfigParser
+       acme_services_config = ConfigParser.ConfigParser()
+       acme_services_config.read('ACMEservices.cfg')
+
+       acme_root = acme_services_config.get("paths","acme_root")
+       esgf_root = acme_services_config.get("paths","acme_root")
+       
+       print 'acme_root: ' + acme_root + ' esgf_root: ' + esgf_root
+       print 'extracting bits'
        
        
        # Step 0 - indicate we are doing something.
