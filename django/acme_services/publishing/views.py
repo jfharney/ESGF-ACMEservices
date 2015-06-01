@@ -396,7 +396,6 @@ def base_facets_put(request):
     else:
         project = 'ACME'
         
-    print 'request.body: ' + str(request.body)
     
     json_data = json.loads(request.body)
     
@@ -405,7 +404,7 @@ def base_facets_put(request):
     
     
     for key in json_data:
-        print 'key: ' + key + ' value: ' + str(json_data[key])
+        #print 'key: ' + key + ' value: ' + str(json_data[key])
         facet = key
         facet_values = json_data[key]
         

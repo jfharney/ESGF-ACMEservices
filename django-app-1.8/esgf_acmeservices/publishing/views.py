@@ -33,11 +33,13 @@ class FacetsView(View):
     
     #import ConfigParser
     esgini_location = acme_services_config.get("esg_ini_options","esgini_location")
-    project = "ACME"
+    #project = "ACME"
     
     
     #given 
-    def get(self, request, username):
+    def get(self, request):
+        
+        self.project = "ACME"
         
         facet_config = ConfigParser.ConfigParser()
         facet_config.read(self.esgini_location)
@@ -73,7 +75,7 @@ class FacetsView(View):
                 #experiment because that is defined with multi-level descriptions
                 if category == 'project':
                     project_arr = []
-                    print 'str: ' + str(project_arr)
+                    logger.debug( 'str: ' + str(project_arr) )
                     project_arr.append(str(self.project))
                     categories['project'] = project_arr
                  
@@ -96,7 +98,7 @@ class FacetsView(View):
                 else:
                     
                     options = facet_config.get("project:" + self.project,category_options)
-                    print 'category: ' + category + ' options: ' + options
+                    logger.debug( 'category: ' + category + ' options: ' + options )
                     
                     categories[category] = options.split(',')
                   
@@ -113,7 +115,7 @@ class FacetsView(View):
     #curl example:
     #curl -i -H "Accept: application/json" -X POST -d "experiment=ACME | B1850C5e1_ne30 | experiment ne30 C6" http://localhost:8000/acme_services/publishing/facets/jfharney
     #
-    def post(self, request, username):
+    def post(self, request):
         
         from django.http import QueryDict
         post_body = QueryDict(str(request.body))
@@ -140,13 +142,13 @@ class FacetsView(View):
             #have to use getlist because some values may be arrays
             facet_values = post_body.getlist(key)
                     
-            print 'facet: ' + facet
+            logger.debug( 'facet: ' + facet )
             
             options_line = str(facet+"_options")
             #print 'options line: ' + options_line + ' options line values: ' + str(parser.get(project_header, options_line) )
                 
             old_facet_values = parser.get(project_header, options_line)
-            print 'old_facet_values: ' + str(old_facet_values)           
+            logger.debug( 'old_facet_values: ' + str(old_facet_values) )    
             
             
             if facet == 'experiment':
@@ -155,16 +157,16 @@ class FacetsView(View):
                 try:
                 
                     old_facet_values_list = old_facet_values.split('\n')
-                    print 'old_facet_values: ' + str(old_facet_values_list)
+                    logger.debug( 'old_facet_values: ' + str(old_facet_values_list) )
                     new_facet_values_list = convertUnicode(facet_values)
-                    print 'new_facet_values: ' + str(new_facet_values_list)
+                    logger.debug( 'new_facet_values: ' + str(new_facet_values_list) )
                     
                     #add lists together (eliminate duplicates)
                     appended_list = new_facet_values_list#trimList(list(set(old_facet_values_list+new_facet_values_list)))
-                    print 'appended list: ' + str(appended_list)
+                    logger.debug( 'appended list: ' + str(appended_list) )
                     
                     parser.set(project_header, options_line, ('\n').join(appended_list))
-                    print parser.get(project_header, facet + '_options')
+                    logger.debug( parser.get(project_header, facet + '_options') )
                     
                     #write changes out
                     f = open(esgini_location, 'w') 
@@ -174,7 +176,6 @@ class FacetsView(View):
                     
                     
                 except:
-                    print 'in except for options line'
                     tb = traceback.format_exc()
                     print tb
                     pass
@@ -187,17 +188,17 @@ class FacetsView(View):
                     old_facet_values_list = old_facet_values.split(',')
                     
                         
-                    print 'old_facet_values: ' + str(old_facet_values_list)
+                    logger.debug( 'old_facet_values: ' + str(old_facet_values_list) )
                     new_facet_values_list = convertUnicode(facet_values)
-                    print 'new_facet_values: ' + str(new_facet_values_list)
+                    logger.debug( 'new_facet_values: ' + str(new_facet_values_list) )
                     
                     #add lists together (eliminate duplicates)
                     appended_list = new_facet_values_list#list(set(old_facet_values_list+new_facet_values_list))
-                    print 'appended list: ' + str(appended_list)
+                    logger.debug( 'appended list: ' + str(appended_list) )
                     
+                    #set to the appended list
                     parser.set(project_header, options_line, (',').join(appended_list))
-        
-                    print parser.get(project_header, 'data_type_options')
+                    logger.debug( parser.get(project_header, 'data_type_options') )
                     
                     #write changes out
                     f = open(esgini_location, 'w') 
@@ -223,7 +224,7 @@ class FacetsView(View):
     #PUT: "Appends" facet options
     #curl -i -H "Accept: application/json" -X PUT -d "experiment=ACME | B1851C5e1_ne30 | experiment ne30 C5" http://localhost:8000/acme_services/publishing/facets/jfharney 
     #
-    def put(self, request, username):
+    def put(self, request):
         
         
         
@@ -274,6 +275,7 @@ class FacetsView(View):
                     appended_list = trimList(list(set(old_facet_values_list+new_facet_values_list)))
                     logger.debug( 'appended list: ' + str(appended_list) )
                     
+                    #set to the appended list
                     parser.set(project_header, options_line, ('\n').join(appended_list))
                     logger.debug( parser.get(project_header, facet + '_options') )
                     
@@ -293,8 +295,6 @@ class FacetsView(View):
             else:
                 
                 
-                
-                
                 try:
                     
                     #convert to list
@@ -309,8 +309,8 @@ class FacetsView(View):
                     appended_list = list(set(old_facet_values_list+new_facet_values_list))
                     logger.debug( 'appended list: ' + str(appended_list) )
                     
+                    #set to the appended list
                     parser.set(project_header, options_line, (',').join(appended_list))
-        
                     logger.debug( parser.get(project_header, 'data_type_options') )
                     
                     #write changes out
@@ -331,7 +331,7 @@ class FacetsView(View):
     
     
     
-    def delete(self, request, username):
+    def delete(self, request):
         
         
         
@@ -341,10 +341,8 @@ class FacetsView(View):
 
 
 def convertUnicode(list):
-    print 'in convert Unicode'
     new_list = []
     for element in list:
-        print 'element: ' + element
         new_list.append(element.encode('utf8'))
     return new_list
                 
@@ -359,27 +357,3 @@ def getOutput(self,facet_config,project,categories_list):
         
     return ''
 
-
-'''  
-def getOutput(facet_config,project,categories_list):
-    
-    
-    
-    categories = []
-    for category_values in categories_list:
-        logger.debug('category_values: ' + category_values)
-        
-        #test if the pipe | is in the category value (denoting a valid cateogry)
-        if "|" in category_values:
-            logger.debug('\tvalid category')
-            
-            category_list = category_values.split("|")
-            category = category_list[0].strip()
-            logger.debug('category: ' + category) 
-            category_options = (category + '_options').strip()
-            options = facet_config.get("project:" + project,category_options)
-                
-            
-        
-    return ''
-'''

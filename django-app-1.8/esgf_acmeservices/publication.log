@@ -565,3 +565,136 @@ ACME | B1850C5_ne30gx1_tuning | experiment ne30
 2015-06-01 17:27:48,462 - publication - DEBUG - category_options: regridding_options
 2015-06-01 17:27:48,462 - publication - DEBUG - category_values: range | enum | true | true | 6
 2015-06-01 17:27:48,462 - publication - DEBUG - category_options: range_options
+2015-06-01 18:00:05,698 - db - INFO - DB Program started
+2015-06-01 18:01:49,949 - db - INFO - DB Program started
+2015-06-01 18:03:43,947 - db - INFO - DB Program started
+2015-06-01 18:05:00,641 - db - INFO - DB Program started
+2015-06-01 18:06:04,357 - db - INFO - DB Program started
+2015-06-01 18:06:04,358 - publication - DEBUG - category_values: 
+2015-06-01 18:06:04,358 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-01 18:06:04,358 - publication - DEBUG - category_options: project_options
+2015-06-01 18:06:04,358 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-01 18:06:04,358 - publication - DEBUG - category_options: data_type_options
+2015-06-01 18:06:04,358 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-01 18:06:04,358 - publication - DEBUG - category_options: experiment_options
+2015-06-01 18:06:04,358 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-01 18:06:04,358 - publication - DEBUG - category_options: realm_options
+2015-06-01 18:06:04,359 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-01 18:06:04,359 - publication - DEBUG - category_options: versionnum_options
+2015-06-01 18:06:04,359 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-01 18:06:04,359 - publication - DEBUG - category_options: regridding_options
+2015-06-01 18:06:04,359 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-01 18:06:04,359 - publication - DEBUG - category_options: range_options
+2015-06-01 18:14:39,118 - db - INFO - DB Program started
+2015-06-01 18:16:18,226 - db - INFO - DB Program started
+2015-06-01 18:16:18,252 - publication - DEBUG - facet: range
+2015-06-01 18:16:18,252 - publication - DEBUG - old_facet_values: all
+2015-06-01 18:16:18,252 - publication - DEBUG - old_facet_values: ['all']
+2015-06-01 18:16:18,253 - publication - DEBUG - new_facet_values: ['all', '10-19']
+2015-06-01 18:16:18,253 - publication - DEBUG - appended list: ['all', '10-19']
+2015-06-01 18:16:18,253 - publication - DEBUG - a,h,dd,h1,climo,h0
+2015-06-01 18:21:28,161 - db - INFO - DB Program started
+2015-06-01 18:21:28,208 - publication - DEBUG - facet: range
+2015-06-01 18:21:28,209 - publication - DEBUG - old_facet_values: all,10-19
+2015-06-01 18:21:28,209 - publication - DEBUG - old_facet_values: ['all', '10-19']
+2015-06-01 18:21:28,209 - publication - DEBUG - new_facet_values: ['all', '10-19']
+2015-06-01 18:21:28,209 - publication - DEBUG - appended list: ['all', '10-19']
+2015-06-01 18:21:28,209 - publication - DEBUG - a,h,dd,h1,climo,h0
+2015-06-01 18:24:39,485 - db - INFO - DB Program started
+2015-06-01 18:24:39,534 - publication - DEBUG - facet: range
+2015-06-01 18:24:39,534 - publication - DEBUG - old_facet_values: all,10-19
+2015-06-01 18:24:39,534 - publication - DEBUG - old_facet_values: ['all', '10-19']
+2015-06-01 18:24:39,534 - publication - DEBUG - new_facet_values: ['all', '10-19']
+2015-06-01 18:24:39,534 - publication - DEBUG - appended list: ['all', '10-19']
+2015-06-01 18:24:39,535 - publication - DEBUG - a,h,dd,h1,climo,h0
+2015-06-01 18:24:53,880 - publication - DEBUG - facet: range
+2015-06-01 18:24:53,880 - publication - DEBUG - old_facet_values: all,10-19
+2015-06-01 18:24:53,880 - publication - DEBUG - old_facet_values: ['all', '10-19']
+2015-06-01 18:24:53,880 - publication - DEBUG - new_facet_values: ['all', '10-19']
+2015-06-01 18:24:53,880 - publication - DEBUG - appended list: ['all', '10-19']
+2015-06-01 18:24:53,880 - publication - DEBUG - a,h,dd,h1,climo,h0
+2015-06-01 18:24:59,830 - publication - DEBUG - category_values: 
+2015-06-01 18:24:59,830 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-01 18:24:59,830 - publication - DEBUG - category_options: project_options
+2015-06-01 18:24:59,830 - publication - DEBUG - str: []
+2015-06-01 18:24:59,830 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-01 18:24:59,830 - publication - DEBUG - category_options: data_type_options
+2015-06-01 18:24:59,830 - publication - DEBUG - category: data_type options: a,h,dd,h1,climo,h0
+2015-06-01 18:24:59,831 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-01 18:24:59,831 - publication - DEBUG - category_options: experiment_options
+2015-06-01 18:24:59,831 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-01 18:24:59,831 - publication - DEBUG - category_options: realm_options
+2015-06-01 18:24:59,831 - publication - DEBUG - category: realm options: atm,ice,lnd,ocn,all,ATM,lndice
+2015-06-01 18:24:59,831 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-01 18:24:59,831 - publication - DEBUG - category_options: versionnum_options
+2015-06-01 18:24:59,831 - publication - DEBUG - category: versionnum options: v0_1,v01,HIGHRES,pre-v0
+2015-06-01 18:24:59,831 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-01 18:24:59,831 - publication - DEBUG - category_options: regridding_options
+2015-06-01 18:24:59,831 - publication - DEBUG - category: regridding options: bilinear,downscaled,native,fv257x512
+2015-06-01 18:24:59,831 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-01 18:24:59,831 - publication - DEBUG - category_options: range_options
+2015-06-01 18:24:59,831 - publication - DEBUG - category: range options: all,10-19
+2015-06-01 18:25:11,656 - publication - DEBUG - category_values: 
+2015-06-01 18:25:11,656 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-01 18:25:11,656 - publication - DEBUG - category_options: project_options
+2015-06-01 18:25:11,656 - publication - DEBUG - str: []
+2015-06-01 18:25:11,656 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: data_type_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category: data_type options: a,h,dd,h1,climo,h0
+2015-06-01 18:25:11,657 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: experiment_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: realm_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category: realm options: atm,ice,lnd,ocn,all,ATM,lndice
+2015-06-01 18:25:11,657 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: versionnum_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category: versionnum options: v0_1,v01,HIGHRES,pre-v0
+2015-06-01 18:25:11,657 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: regridding_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category: regridding options: bilinear,downscaled,native,fv257x512
+2015-06-01 18:25:11,657 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-01 18:25:11,657 - publication - DEBUG - category_options: range_options
+2015-06-01 18:25:11,657 - publication - DEBUG - category: range options: all,10-19
+2015-06-01 18:36:05,081 - db - INFO - DB Program started
+2015-06-01 18:36:05,113 - publication - DEBUG - category_values: 
+2015-06-01 18:36:05,113 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-01 18:36:05,113 - publication - DEBUG - category_options: project_options
+2015-06-01 18:36:05,113 - publication - DEBUG - str: []
+2015-06-01 18:36:05,113 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-01 18:36:05,113 - publication - DEBUG - category_options: data_type_options
+2015-06-01 18:36:05,114 - publication - DEBUG - category: data_type options: a,h,dd,h1,climo,h0
+2015-06-01 18:36:05,114 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-01 18:36:05,114 - publication - DEBUG - category_options: experiment_options
+2015-06-01 18:36:05,114 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-01 18:36:05,114 - publication - DEBUG - category_options: realm_options
+2015-06-01 18:36:05,114 - publication - DEBUG - category: realm options: atm,ice,lnd,ocn,all,ATM,lndice
+2015-06-01 18:36:05,114 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-01 18:36:05,114 - publication - DEBUG - category_options: versionnum_options
+2015-06-01 18:36:05,114 - publication - DEBUG - category: versionnum options: v0_1,v01,HIGHRES,pre-v0
+2015-06-01 18:36:05,114 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-01 18:36:05,114 - publication - DEBUG - category_options: regridding_options
+2015-06-01 18:36:05,114 - publication - DEBUG - category: regridding options: bilinear,downscaled,native,fv257x512
+2015-06-01 18:36:05,114 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-01 18:36:05,115 - publication - DEBUG - category_options: range_options
+2015-06-01 18:36:05,115 - publication - DEBUG - category: range options: all,10-19
+2015-06-01 18:36:16,992 - publication - DEBUG - category_values: 
+2015-06-01 18:36:16,992 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-01 18:36:16,992 - publication - DEBUG - category_options: project_options
+2015-06-01 18:36:16,993 - publication - DEBUG - str: []
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: data_type_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category: data_type options: a,h,dd,h1,climo,h0
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: experiment_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: realm_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category: realm options: atm,ice,lnd,ocn,all,ATM,lndice
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: versionnum_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category: versionnum options: v0_1,v01,HIGHRES,pre-v0
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: regridding_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category: regridding options: bilinear,downscaled,native,fv257x512
+2015-06-01 18:36:16,993 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-01 18:36:16,993 - publication - DEBUG - category_options: range_options
+2015-06-01 18:36:16,993 - publication - DEBUG - category: range options: all,10-19

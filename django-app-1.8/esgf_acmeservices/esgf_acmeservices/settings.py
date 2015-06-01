@@ -103,7 +103,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+#APPEND_SLASH = True
 
 '''
 import logging
