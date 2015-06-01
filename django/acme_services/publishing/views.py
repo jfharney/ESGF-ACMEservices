@@ -413,6 +413,13 @@ def base_facets_put(request):
         facet_values_arr.append(facet_values)
     
     
+    '''
+    
+    
+    '''
+    
+    
+    
     #write_facet_values(project,facet_arr,facet_values_arr)
     
 

@@ -154,3 +154,27 @@ LOGGING = {
         },
     }
 }
+
+
+
+import logging
+logger = logging.getLogger("publication")
+logger.setLevel(logging.INFO)
+
+# create the logging file handler
+fh = logging.FileHandler("new_snake.log")
+print 'creating logger'
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+
+
+# add handler to logger object
+logger.addHandler(fh)
+
+logger.info("Program started")
+
+'''
+logger = logging.getLogger('publication')
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.INFO)
+'''
