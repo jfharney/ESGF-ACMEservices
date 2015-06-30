@@ -6,7 +6,17 @@ components of the ESGF node that are not accessible through other projects (web-
 
 # Installation
 
-## The second largest heading 
+# Configuration
+
+# Services offered
+
+## ESG_INI CRUD operations
+
+The esg ini crud (create, read, update, delete) operations services provide clients an API for 
+remotely changing and accessing configuration information in the esg.ini.  In the alpha version,
+the information is facets and their values
+
+### 
 …
 ###### The 6th largest heading 
 
