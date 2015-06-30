@@ -1,11 +1,14 @@
 ESGF-ACMEservices
 =================
 
-# The largest heading (an <h1> tag)
+The ESGF-ACMEservices project implements miscellaneous services that allows access (read and write) to specific 
+components of the ESGF node that are not accessible through other projects (web-fe, cog,search, node-manager, etc)
 
-## The second largest heading (an <h2> tag)
+# Installation
+
+## The second largest heading 
 …
-###### The 6th largest heading (an <h6> tag)
+###### The 6th largest heading 
 
 *This text will be italic*
 **This text will be bold**
