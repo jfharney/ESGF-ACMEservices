@@ -16,7 +16,32 @@ The esg ini crud (create, read, update, delete) operations services provide clie
 remotely changing and accessing configuration information in the esg.ini.  In the alpha version,
 the information is facets and their values
 
-### 
+### GET
+
+#### API
+
+#### Example
+
+### POST
+
+#### API
+
+#### Example
+
+### PUT
+
+#### API
+
+#### Example
+
+### DELETE
+
+#### API
+
+#### Example
+
+## ESG_INI CRUD operations
+
 …
 ###### The 6th largest heading 
 
