@@ -1,1 +1,12 @@
-2015-05-31 04:14:12,241 - db - INFO - Program started
+2015-06-01 19:49:24,828 - db - DEBUG - isConnected: True
+2015-06-01 19:49:36,579 - db - DEBUG - isConnected: True
+2015-06-01 19:52:04,878 - db - DEBUG - isConnected: True
+2015-06-01 19:52:43,835 - db - DEBUG - isConnected: True
+2015-06-01 19:54:08,271 - db - DEBUG - isConnected: True
+2015-06-01 19:55:19,776 - db - DEBUG - isConnected: True
+2015-06-01 19:56:37,448 - db - DEBUG - isConnected: True
+2015-06-01 19:56:44,205 - db - DEBUG - isConnected: True
+2015-06-02 02:49:30,007 - db - DEBUG - isConnected: True
+2015-06-02 02:49:40,248 - db - DEBUG - isConnected: True
+2015-06-02 02:50:03,251 - db - DEBUG - isConnected: True
+2015-06-02 02:57:10,375 - db - DEBUG - isConnected: True

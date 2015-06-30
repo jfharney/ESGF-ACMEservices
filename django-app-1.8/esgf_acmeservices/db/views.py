@@ -4,42 +4,61 @@ from django.http import HttpResponse
 from django.views.generic import View
 
 import json
-
-
 import ConfigParser
+import traceback
+import logging
+
 acme_services_config = ConfigParser.ConfigParser()
 acme_services_config.read('ACMEservices.cfg')
 
-#db configuration params
-dbname = acme_services_config.get("db_options","dbname")
-dbuser = acme_services_config.get("db_options","dbuser")
-dbpassword = acme_services_config.get("db_options","dbpassword")
-isConnectedToDB = acme_services_config.get("db_options","isConnectedToDB")
-
-#testing params
-populate_groups = acme_services_config.get("test_options","populate_groups")
-
-
-import logging
-db_logger = logging.getLogger("db")
-db_logger.setLevel(logging.INFO)
+logger = logging.getLogger("db")
+logger.setLevel(logging.DEBUG)
 
 # create the logging file handler
-# add handler to logger object
-fh = logging.FileHandler("publication.log")
+db_log_file = acme_services_config.get("loggers","db_log_file")
+fh = logging.FileHandler(db_log_file)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fh.setFormatter(formatter)
-db_logger.addHandler(fh)
 
-db_logger.info("DB Program started") 
+# add handler to logger object
+logger.addHandler(fh)
+
 
 #gets group information
 class GroupView(View):
     
+    dbname = acme_services_config.get("db_options","dbname")
+    dbuser = acme_services_config.get("db_options","dbuser")
+    dbpassword = acme_services_config.get("db_options","dbpassword")
+    isConnectedToDB = acme_services_config.get("db_options","isConnectedToDB")
+    
+    
     def get(self, request, username):
         
-        print 'isConnected: ' + str(isConnectedToDB)
+        self.isConnectedToDB = acme_services_config.get("db_options","isConnectedToDB")
+        logger.debug('isConnected: ' + str(self.isConnectedToDB))
         
+        
+        
+        if self.isConnectedToDB == "True":
+            try:
+                print 'in true'
+                import psycopg2
+                conn=psycopg2.connect("dbname='" + dbname + "' user='" + dbuser + "' password='" + dbpassword + "'")
+                cur = conn.cursor()
+                
+            except:
+                print 'in connected to DB except'
+                tb = traceback.format_exc()
+                print tb
+                pass
+            return HttpResponse("Connected\n")
+        
+        else:
+            
+            return HttpResponse("Not Connected\n")
+        
+        '''
         if isConnectedToDB == "True":
         
             try:
@@ -49,7 +68,7 @@ class GroupView(View):
                 conn=psycopg2.connect("dbname='" + dbname + "' user='" + dbuser + "' password='" + dbpassword + "'")
                 cur = conn.cursor()
                 
-                '''
+                
                 user_id = get_user_id(username)
 
                 print 'user_id: ' + user_id    
@@ -59,13 +78,14 @@ class GroupView(View):
                 group_name_list_set = get_group_name_list_set(group_id_list_set)
             
                 groups_response = group_name_list_set
-                '''
+                
             
                 return HttpResponse("Connected\n")
             
             except:
                 print 'in connected to DB except'
-            
+                tb = traceback.format_exc()
+                print tb
                 return HttpResponse("Not Connected\n")
         
         else:
@@ -78,11 +98,10 @@ class GroupView(View):
             data_string = notConnectedResponse()
             return HttpResponse(data_string + '\n')
     
-    
+        '''
 
 
-
-
+'''
 def notConnectedResponse():
     
     groups_response = []
@@ -94,4 +113,4 @@ def notConnectedResponse():
     data_string = json.dumps(data,sort_keys=False,indent=2)    
 
     return data_string
-
+'''

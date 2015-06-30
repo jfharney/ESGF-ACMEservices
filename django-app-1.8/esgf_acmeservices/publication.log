@@ -698,3 +698,55 @@ ACME | B1850C5_ne30gx1_tuning | experiment ne30
 2015-06-01 18:36:16,993 - publication - DEBUG - category_values: range | enum | true | true | 6
 2015-06-01 18:36:16,993 - publication - DEBUG - category_options: range_options
 2015-06-01 18:36:16,993 - publication - DEBUG - category: range options: all,10-19
+2015-06-01 19:32:36,827 - db - DEBUG - isConnected: True
+2015-06-01 19:33:57,963 - db - DEBUG - isConnected: True
+2015-06-01 19:46:58,575 - db - DEBUG - isConnected: True
+2015-06-01 19:48:10,094 - db - DEBUG - isConnected: True
+2015-06-01 19:48:23,670 - db - DEBUG - isConnected: True
+2015-06-01 19:48:49,960 - db - DEBUG - isConnected: True
+2015-06-01 19:49:10,406 - db - DEBUG - isConnected: True
+2015-06-30 22:55:14,310 - publication - DEBUG - In facet post
+2015-06-30 22:55:35,454 - publication - DEBUG - In facet post
+2015-06-30 22:57:31,461 - publication - DEBUG - In facet post
+2015-06-30 22:58:45,443 - publication - DEBUG - In facet post
+2015-06-30 22:59:32,163 - publication - DEBUG - In facet post
+2015-06-30 22:59:51,137 - publication - DEBUG - In facet post
+2015-06-30 23:00:03,274 - publication - DEBUG - In facet post
+2015-06-30 23:00:51,200 - publication - DEBUG - In facet post
+2015-06-30 23:01:29,165 - publication - DEBUG - In facet post
+2015-06-30 23:01:29,182 - publication - DEBUG - Traceback (most recent call last):
+  File "/Users/8xo/software/exploratory_analysis/ESGF-ACMEservices/django-app-1.8/esgf_acmeservices/publishing/views.py", line 132, in post
+    print str(self.project)
+AttributeError: 'FacetsView' object has no attribute 'project'
+
+2015-06-30 23:01:55,579 - publication - DEBUG - In facet post
+2015-06-30 23:02:26,431 - publication - DEBUG - In facet post
+2015-06-30 23:02:26,431 - publication - DEBUG - esg ini location: /Users/8xo/software/exploratory_analysis/ESGF-ACMEservices/django-app-1.8/esgf_acmeservices/esg2.ini
+2015-06-30 23:02:58,824 - publication - DEBUG - In facet post
+2015-06-30 23:02:58,824 - publication - DEBUG - esg ini location: /Users/8xo/software/exploratory_analysis/ESGF-ACMEservices/django-app-1.8/esgf_acmeservices/esg2.ini
+2015-06-30 23:04:48,221 - publication - DEBUG - In facet post
+2015-06-30 23:04:48,222 - publication - DEBUG - esg ini location: /Users/8xo/software/exploratory_analysis/ESGF-ACMEservices/django-app-1.8/esgf_acmeservices/esg2.ini
+2015-06-30 23:04:48,222 - publication - DEBUG - facet: experiment
+2015-06-30 23:04:48,222 - publication - DEBUG - old_facet_values: 
+ACME | B1850C5_ne30gx1_tuning | experiment ne30
+ACME | B1850C5e1_ne30 | experiment ne30 C5
+2015-06-30 23:04:48,222 - publication - DEBUG - old_facet_values: ['', 'ACME | B1850C5_ne30gx1_tuning | experiment ne30', 'ACME | B1850C5e1_ne30 | experiment ne30 C5']
+2015-06-30 23:04:48,222 - publication - DEBUG - new_facet_values: ['ACME | B1850C5e1_ne30 | experiment ne30 C7']
+2015-06-30 23:04:48,222 - publication - DEBUG - appended list: ['ACME | B1850C5e1_ne30 | experiment ne30 C7']
+2015-06-30 23:04:48,222 - publication - DEBUG - ACME | B1850C5e1_ne30 | experiment ne30 C7
+2015-06-30 23:11:10,978 - publication - DEBUG - facet: experiment
+2015-06-30 23:11:10,992 - publication - DEBUG - old_facet_values: 
+ACME | B1850C5_ne30gx1_tuning | experiment ne30
+ACME | B1850C5e1_ne30 | experiment ne30 C5
+2015-06-30 23:11:10,992 - publication - DEBUG - old_facet_values: ['', 'ACME | B1850C5_ne30gx1_tuning | experiment ne30', 'ACME | B1850C5e1_ne30 | experiment ne30 C5']
+2015-06-30 23:11:10,992 - publication - DEBUG - new_facet_values: ['ACME | B1851C5e1_ne30 | experiment ne30 C7']
+2015-06-30 23:11:10,992 - publication - DEBUG - appended list: ['ACME | B1850C5_ne30gx1_tuning | experiment ne30', 'ACME | B1851C5e1_ne30 | experiment ne30 C7', 'ACME | B1850C5e1_ne30 | experiment ne30 C5']
+2015-06-30 23:11:10,992 - publication - DEBUG - ACME | B1850C5_ne30gx1_tuning | experiment ne30
+ACME | B1851C5e1_ne30 | experiment ne30 C7
+ACME | B1850C5e1_ne30 | experiment ne30 C5
+2015-06-30 23:11:59,215 - publication - DEBUG - facet: realm
+2015-06-30 23:11:59,215 - publication - DEBUG - old_facet_values: atm,ice,lnd,ocn,all,ATM,lndice
+2015-06-30 23:11:59,215 - publication - DEBUG - old_facet_values: ['atm', 'ice', 'lnd', 'ocn', 'all', 'ATM', 'lndice']
+2015-06-30 23:11:59,215 - publication - DEBUG - new_facet_values: ['None']
+2015-06-30 23:11:59,215 - publication - DEBUG - appended list: ['lndice', 'all', 'atm', 'ocn', 'ATM', 'None', 'ice', 'lnd']
+2015-06-30 23:11:59,215 - publication - DEBUG - a,h,dd,h1,climo,h0

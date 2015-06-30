@@ -7,9 +7,12 @@ import json
 import ConfigParser
 import traceback
 
+
+
 acme_services_config = ConfigParser.ConfigParser()
 acme_services_config.read('ACMEservices.cfg')
 
+#get the esgini location from the config file
 esgini_location = acme_services_config.get("esg_ini_options","esgini_location")
 esgini = ConfigParser.ConfigParser()
 esgini.read(esgini_location)
@@ -23,6 +26,7 @@ publication_log_file = acme_services_config.get("loggers","publication_log_file"
 fh = logging.FileHandler(publication_log_file)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 fh.setFormatter(formatter)
+
 # add handler to logger object
 logger.addHandler(fh)
 
@@ -33,13 +37,15 @@ class FacetsView(View):
     
     #import ConfigParser
     esgini_location = acme_services_config.get("esg_ini_options","esgini_location")
-    #project = "ACME"
+    project = "ACME"
     
     
     #given 
     def get(self, request):
         
-        self.project = "ACME"
+        #hard coded ACME value
+        #need to change this to grab from the request object
+        #self.project = "ACME"
         
         facet_config = ConfigParser.ConfigParser()
         facet_config.read(self.esgini_location)
@@ -120,6 +126,8 @@ class FacetsView(View):
         from django.http import QueryDict
         post_body = QueryDict(str(request.body))
         
+        logger.debug("In facet post")
+        
         
         project_header = "project:" + self.project
         
@@ -128,10 +136,20 @@ class FacetsView(View):
         
         from ConfigParser import SafeConfigParser
         import sys
-    
+        
+        
+        try:
+            logger.debug("esg ini location: " + self.esgini_location)
+        except:
+            tb = traceback.format_exc()
+            print tb
+            pass
+        
+        
+        
         parser = SafeConfigParser()
         parser.read(self.esgini_location)
-    
+        
         #get listing of facets
         
         
