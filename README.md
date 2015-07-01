@@ -19,21 +19,22 @@ The repo has an "ACMEservices-sample.cfg" file that has all of the keys needed (
 
 ## general service parameters
 
-- publication_log_file - the name of the log file that outputs debugging messages
+- publication_log_file - the name of the log file that outputs debugging messages for the publication service
 - publication_logger_level - the log level of the debug statements (defunct right now, but may be added later)
-- db_log_file
-- db_logger_level
+- db_log_file - the name of the log file that outputs debugging messages for the db service
+- db_logger_level - the log level of the debug statements (defunct right now, but may be added later)
 
 ## esg ini service parameters
 
+
 ## db service parameters
 
-- populate_groups
-- isConnectedToDB
+- populate_groups - used for debugging purposes when there is no network connection
+- isConnectedToDB - used for debugging purposes when there is no network connection
 - dbname - name of the db housing the ESGF user info (default is esgcet)
-- dbuser - 
-- dbpassword
-- esgini_location
+- dbuser - name of the ESGF user 
+- dbpassword - password of the ESGF user
+- esgini_location - location of the esg ini file
 
 # Services offered
 
@@ -60,6 +61,8 @@ http://<hostname>:<port>/acme_services/publishing/facets/<username>?project=<pro
 <project_name> - The project name 
 
 #### Example
+
+Assuming 
 
 curl -X GET http://localhost:8081/acme_services/publishing/facets/jfharney 
 
