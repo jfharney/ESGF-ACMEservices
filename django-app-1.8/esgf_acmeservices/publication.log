@@ -750,3 +750,24 @@ ACME | B1850C5e1_ne30 | experiment ne30 C5
 2015-06-30 23:11:59,215 - publication - DEBUG - new_facet_values: ['None']
 2015-06-30 23:11:59,215 - publication - DEBUG - appended list: ['lndice', 'all', 'atm', 'ocn', 'ATM', 'None', 'ice', 'lnd']
 2015-06-30 23:11:59,215 - publication - DEBUG - a,h,dd,h1,climo,h0
+2015-06-30 23:58:00,724 - publication - DEBUG - category_values: 
+2015-06-30 23:58:00,731 - publication - DEBUG - category_values: project | enum | true | true | 0
+2015-06-30 23:58:00,732 - publication - DEBUG - category_options: project_options
+2015-06-30 23:58:00,732 - publication - DEBUG - str: []
+2015-06-30 23:58:00,732 - publication - DEBUG - category_values: data_type | enum | true | true | 1
+2015-06-30 23:58:00,733 - publication - DEBUG - category_options: data_type_options
+2015-06-30 23:58:00,733 - publication - DEBUG - category: data_type options: a,h,dd,h1,climo,h0
+2015-06-30 23:58:00,733 - publication - DEBUG - category_values: experiment | enum | true | true | 2
+2015-06-30 23:58:00,733 - publication - DEBUG - category_options: experiment_options
+2015-06-30 23:58:00,733 - publication - DEBUG - category_values: realm | enum | true | true | 3
+2015-06-30 23:58:00,733 - publication - DEBUG - category_options: realm_options
+2015-06-30 23:58:00,734 - publication - DEBUG - category: realm options: lndice,all,atm,ocn,ATM,None,ice,lnd
+2015-06-30 23:58:00,734 - publication - DEBUG - category_values: versionnum | enum | true | true | 4
+2015-06-30 23:58:00,734 - publication - DEBUG - category_options: versionnum_options
+2015-06-30 23:58:00,734 - publication - DEBUG - category: versionnum options: v0_1,v01,HIGHRES,pre-v0
+2015-06-30 23:58:00,734 - publication - DEBUG - category_values: regridding | enum | true | true | 5
+2015-06-30 23:58:00,734 - publication - DEBUG - category_options: regridding_options
+2015-06-30 23:58:00,734 - publication - DEBUG - category: regridding options: bilinear,downscaled,native,fv257x512
+2015-06-30 23:58:00,734 - publication - DEBUG - category_values: range | enum | true | true | 6
+2015-06-30 23:58:00,734 - publication - DEBUG - category_options: range_options
+2015-06-30 23:58:00,735 - publication - DEBUG - category: range options: all,10-19
