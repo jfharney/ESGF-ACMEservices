@@ -64,7 +64,11 @@ http://<hostname>:<port>/acme_services/publishing/facets/<username>?project=<pro
 
 Assuming 
 
+REQUEST:
+
 curl -X GET http://localhost:8081/acme_services/publishing/facets/jfharney 
+
+RESPONSE:
 
 {
   "realm": [
@@ -113,15 +117,78 @@ curl -X GET http://localhost:8081/acme_services/publishing/facets/jfharney
 
 ### POST
 
+The "POST" operation removes the previous facet value entry and REPLACES it with a new entry.
+
 #### API
 
+
+##### URL
+
+http://<hostname>:<port>/acme_services/publishing/facets/<username>?project=<project_name>
+
+<hostname> - The host or ip address of the system running the application
+<port> - The port on which the system is running
+<username> - Username of the requestor.  NOTE: This must be a user with read access to a specific project
+<project_name> - The project name 
+
+##### Data
+
+<facet_name1>=<facet_value1>,<facet_name1>=<facet_value2>,<facet_name2>=<facet_value3>,...
+
+Note: there can be more than one facet defined and more than one facet value for each facet
+
+##### Response
+
+None
+
 #### Example
+
+REQUEST:
+
+curl -i -H "Accept: application/json" -X POST -d "experiment=ACME | B1851C5e1_ne30 | experiment ne30 C*" http://localhost:8081/acme_services/publishing/facets/jfharney 
+
+
+RESPONSE:
+
+None
 
 ### PUT
 
+The "POST" operation removes the previous facet value entry and APPENDS it with a new entry.
+
 #### API
 
+
+##### URL
+
+http://<hostname>:<port>/acme_services/publishing/facets/<username>?project=<project_name>
+
+<hostname> - The host or ip address of the system running the application
+<port> - The port on which the system is running
+<username> - Username of the requestor.  NOTE: This must be a user with read access to a specific project
+<project_name> - The project name 
+
+##### Data
+
+<facet_name1>=<facet_value1>,<facet_name1>=<facet_value2>,<facet_name2>=<facet_value3>,...
+
+Note: there can be more than one facet defined and more than one facet value for each facet
+
+##### Response
+
+None
+
 #### Example
+
+REQUEST:
+
+curl -i -H "Accept: application/json" -X PUT -d "experiment=ACME | B1851C5e1_ne30 | experiment ne30 C*" http://localhost:8081/acme_services/publishing/facets/jfharney 
+
+
+RESPONSE:
+
+None
+
 
 ### DELETE
 
@@ -129,7 +196,15 @@ curl -X GET http://localhost:8081/acme_services/publishing/facets/jfharney
 
 #### Example
 
-## ESG_INI CRUD operations
+REQUEST:
+
+
+
+RESPONSE:
+
+
+
+## ESGF DB operations
 
 ### Configuration options
 
